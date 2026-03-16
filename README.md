@@ -23,6 +23,19 @@ Source: https://docs.uniswap.org/contracts/v4/deployments
 2. On swap, the hook pulls `feeAmount` of token0 from the swap sender and deposits to the vault.
 3. Vault updates rewards; stakers can claim.
 
+## Tests
+```bash
+forge test
+```
+
+### Sepolia fork
+```bash
+RPC_URL=<your_sepolia_rpc> forge test --match-test testDeployHookAndVaultOnFork
+```
+(If RPC_URL is not set, the fork test is skipped.)
+
+**Verified:** ran fork test against `https://ethereum-sepolia-rpc.publicnode.com` — PASS.
+
 ## Deploy (Sepolia)
 > **Important:** v4 hooks require the contract address to match permission bits.
 > Use **HookMiner** (v4-periphery test utils) + CREATE2 to deploy a valid hook address.
@@ -41,6 +54,14 @@ export FEE_AMOUNT=<flat fee in token0 units>
 ### Deploy
 ```bash
 forge script script/DeployHook.s.sol --rpc-url $RPC_URL --broadcast
+```
+
+## Frontend
+```bash
+cd frontend
+cp .env.example .env.local
+npm install
+npm run dev
 ```
 
 ## Next upgrades

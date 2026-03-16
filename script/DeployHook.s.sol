@@ -2,7 +2,7 @@
 pragma solidity ^0.8.20;
 
 import "forge-std/Script.sol";
-import {IPoolManager} from "../lib/v4-core/contracts/interfaces/IPoolManager.sol";
+import {IPoolManager} from "v4-core/interfaces/IPoolManager.sol";
 import {FeeStakingHook} from "../src/hooks/FeeStakingHook.sol";
 import {StakingVault} from "../src/StakingVault.sol";
 
