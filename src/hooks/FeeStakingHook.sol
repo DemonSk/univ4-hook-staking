@@ -66,12 +66,11 @@ contract FeeStakingHook is IHooks {
         return this.afterInitialize.selector;
     }
 
-    function beforeAddLiquidity(
-        address,
-        PoolKey calldata,
-        IPoolManager.ModifyLiquidityParams calldata,
-        bytes calldata
-    ) external onlyPoolManager returns (bytes4) {
+    function beforeAddLiquidity(address, PoolKey calldata, IPoolManager.ModifyLiquidityParams calldata, bytes calldata)
+        external
+        onlyPoolManager
+        returns (bytes4)
+    {
         return this.beforeAddLiquidity.selector;
     }
 
@@ -106,12 +105,11 @@ contract FeeStakingHook is IHooks {
         return (this.afterRemoveLiquidity.selector, BalanceDelta.wrap(0));
     }
 
-    function beforeSwap(
-        address,
-        PoolKey calldata,
-        IPoolManager.SwapParams calldata,
-        bytes calldata
-    ) external onlyPoolManager returns (bytes4, BeforeSwapDelta, uint24) {
+    function beforeSwap(address, PoolKey calldata, IPoolManager.SwapParams calldata, bytes calldata)
+        external
+        onlyPoolManager
+        returns (bytes4, BeforeSwapDelta, uint24)
+    {
         return (this.beforeSwap.selector, BeforeSwapDelta.wrap(0), 0);
     }
 
@@ -132,23 +130,19 @@ contract FeeStakingHook is IHooks {
         return (this.afterSwap.selector, 0);
     }
 
-    function beforeDonate(
-        address,
-        PoolKey calldata,
-        uint256,
-        uint256,
-        bytes calldata
-    ) external onlyPoolManager returns (bytes4) {
+    function beforeDonate(address, PoolKey calldata, uint256, uint256, bytes calldata)
+        external
+        onlyPoolManager
+        returns (bytes4)
+    {
         return this.beforeDonate.selector;
     }
 
-    function afterDonate(
-        address,
-        PoolKey calldata,
-        uint256,
-        uint256,
-        bytes calldata
-    ) external onlyPoolManager returns (bytes4) {
+    function afterDonate(address, PoolKey calldata, uint256, uint256, bytes calldata)
+        external
+        onlyPoolManager
+        returns (bytes4)
+    {
         return this.afterDonate.selector;
     }
 }
